@@ -1,0 +1,47 @@
+<div class="row alyo-margine-0px alyo-padding-20px">
+    <div class="col-sm-3 alyo-margine-0px alyo-padding-0px"></div>
+    <div class="col-sm-6 alyo-margine-0px alyo-padding-0px">
+
+        <div *ngIf="!log" class="row alyo-margine-0px alyo-padding-0px">
+            <div class="col-sm-4 alyo-margine-0px alyo-padding-0px">
+                <p></p>
+            </div>
+            <div class="col-sm-4 alyo-margine-0px alyo-padding-10px alyo-bianco alyo-bordo-rotondo-20px alyo alyo-ombra-20">
+                <div class="alyo-testo-centro alyo-margine-sotto-10px"><img src="../assets/icone/doctor.png" class="alyo-larghezza-100px alyo-bordo-rotondo-50 alyo-bordo-grigio10-1px"></div>
+                <div class="alyo-padding-10px alyo-testo-centro alyo-testo-rosso">{{messaggio}}</div>
+                <input [(ngModel)]="email" class="alyo-margine-sotto-10px alyo-padding-10px alyo-bordo-rotondo-10px alyo-bordo-0px alyo-larghezza-100 alyo-grigio10" placeholder="Username">
+                <input [(ngModel)]="password" class="alyo-margine-sotto-10px alyo-padding-10px alyo-bordo-rotondo-10px alyo-bordo-0px alyo-larghezza-100 alyo-grigio10" placeholder="Password">
+                <button (click)="login()" class="alyo-padding-10px alyo-bordo-rotondo-10px alyo-bordo-0px alyo-larghezza-100 alyo-azzurro alyo-testo-bianco alyo-trasparente-hover-70">Login</button>
+            </div>
+        </div>
+
+        <div *ngIf="log" class="row alyo-margine-0px alyo-padding-0px">
+            <div class="col-sm-3 alyo-margine-0px alyo-padding-0px">
+                <p></p>
+            </div>
+            <div class="col-sm-6">
+                <div class="row alyo-margine-0px alyo-padding-10px alyo-bianco alyo-bordo-rotondo-20px alyo alyo-ombra-20 alyo-margine-sotto-10px">
+                    <div class="col-2"><img [src]="'https://www.alyowool.com/'+this.utente.immagine" class="alyo-zoom-interno alyo-altezza-100 alyo-larghezza-100 alyo-bordo-rotondo-50 alyo-bordo-grigio20-1px"></div>
+                    <div class="col-10 alyo-padding-sinistro-10px">
+                        {{this.utente.nome}} {{ this.utente.cognome }}<br> ID: {{ this.utente.id_contatto }} <br> {{ this.utente.email }}
+                    </div>
+                </div>
+
+                <input [(ngModel)]="testo" (keyup)="search()" class="alyo-margine-sotto-10px alyo-padding-10px alyo-bordo-rotondo-20px alyo-bordo-0px alyo-larghezza-100 alyo-bianco alyo-ombra-20 alyo-bordo-grigio20-1px" placeholder="🔎 Search">
+            </div>
+
+            <div class="row alyo-margine-0px alyo-padding-5px">
+                <div *ngFor="let item of utenti" class="col-sm-3 alyo-margine-0px alyo-padding-5px">
+                    <div class="alyo-padding-10px alyo-bianco alyo-bordo-rotondo-20px alyo alyo-ombra-20">
+                        <div class="alyo-testo-centro alyo-margine-sotto-10px"><img [src]="'https://www.alyowool.com/'+this.item.immagine" class="alyo-zoom-interno alyo-altezza-100 alyo-larghezza-massima-100px alyo-bordo-rotondo-50 alyo-bordo-grigio20-1px"></div>
+                        <h4 class="alyo-testo-centro">{{ item.nome }}</h4>
+                        <div class="alyo-testo-centro alyo-margine-sotto-10px">ID: {{ item.id_contatto }}</div>
+                        <div class="alyo-overflow-nascosto alyo-larghezza-100 alyo-grigio10-hover alyo-testo-14px alyo-padding-10px alyo-bordo-0px alyo-bianco alyo-bordo-rotondo-10px alyo-margine-0px"><a [href]="'mailto:'+item.email">{{ item.email }}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
