@@ -14,15 +14,14 @@ export class AppComponent {
   email = "";
   password = "";
   messaggio = "";
-  //utente: any = [];
   testo = ""
-  utenti: any = [];
 
-  utente: any = {nome:"Alyosha",cognome: "Vallucci",email: "alyosha.vallucci@gmail.com",id: "1",id_contatto: "0006476650",immagine: "esercizio/assets/immagini/alyosha.jpeg",password: "vekkio44"}
+  utente: any = [];
+  utenti: any = [];
 
   constructor(private alyoservice: AlyoService){}
 
-  ngOnInit(): void {this.log=true;}
+  ngOnInit(): void {}
 
   login(){
 
@@ -32,7 +31,7 @@ export class AppComponent {
       
       this.alyoservice.alyo_login(formdate).subscribe(dati => {
 
-        this.s("DATI HOME: ",dati)
+        //this.s("DATI HOME: ",dati)
 
         if(dati.stato){
           this.utente = dati.utente;
@@ -52,7 +51,7 @@ export class AppComponent {
     formdate.append("search",this.testo);
     
     this.alyoservice.alyo_search(formdate).subscribe(dati => {
-      this.s("DATI HOME: ",dati)
+      //this.s("DATI HOME: ",dati)
       this.utenti = dati.utenti
 
       if(dati.stato){
